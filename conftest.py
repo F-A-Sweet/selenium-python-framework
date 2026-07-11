@@ -1,12 +1,21 @@
 import pytest
-
 from utils.driver_factory import DriverFactory
 
 
-@pytest.fixture
-def driver():
+def pytest_addoption(parser):
+    parser.addoption(
+        "--browser",
+        action="store",
+        default="chrome",
+        help="Choose browser: chrome, firefox, edge"
+    )
 
-    driver = DriverFactory.get_driver("chrome")
+
+@pytest.fixture
+def driver(request):
+    browser = request.config.getoption("--browser")
+
+    driver = DriverFactory.get_driver(browser)
 
     yield driver
 
