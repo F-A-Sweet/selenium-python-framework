@@ -6,8 +6,6 @@ def test_login(driver):
 
     login = LoginPage(driver)
 
-    login.enter_username("Admin")
-    login.enter_password("admin123")
-    login.click_login()
+    login.login("Admin", "admin123")
 
     assert "dashboard" in driver.current_url.lower()
