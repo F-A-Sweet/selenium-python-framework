@@ -1,13 +1,13 @@
 import pytest
-from selenium import webdriver
+
+from utils.driver_factory import DriverFactory
 
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
+
+    driver = DriverFactory.get_driver("chrome")
 
     yield driver
-
-    print("\n\n\nClosing Browser...")
 
     driver.quit()
