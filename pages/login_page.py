@@ -4,7 +4,7 @@ class LoginPage:
 
     USERNAME = (By.NAME, "username")
     PASSWORD = (By.NAME, "password")
-    LOGIN_BUTTON = (By.TAG_NAME, "button")
+    LOGIN_BUTTON = (By.CSS_SELECTOR, "button")
 
     def __init__(self,driver):
         self.driver = driver
@@ -19,6 +19,11 @@ class LoginPage:
         self.driver.find_element(*self.LOGIN_BUTTON).click()
 
     def login(self, username, password):
+        print("Entering username")
         self.enter_username(username)
+
+        print("Entering password")
         self.enter_password(password)
+
+        print("Clicking login")
         self.click_login()
