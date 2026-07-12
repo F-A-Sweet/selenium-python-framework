@@ -1,8 +1,7 @@
 from pages.login_page import LoginPage
+from utils.config_reader import ConfigReader
 
 def test_login(driver):
-
-    from utils.config_reader import ConfigReader
 
     driver.get(ConfigReader.get_base_url())
 
