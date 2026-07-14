@@ -10,10 +10,8 @@ def test_login(driver):
 
     login.login("Admin", "admin123")
 
-    Screenshot.capture(driver, "login_test")
-
     print("Current URL:", driver.current_url)
     print("Page Title:", driver.title)
     print("Page Source contains Invalid?:", "Invalid" in driver.page_source)
 
-    assert "dashboard" in driver.current_url.lower()
+    assert "abcd" in driver.current_url.lower()
