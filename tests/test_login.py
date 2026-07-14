@@ -1,7 +1,9 @@
+import pytest
 from pages.login_page import LoginPage
 from utils.config_reader import ConfigReader
 from utils.screenshot import Screenshot
 
+@pytest.mark.regression
 def test_login(driver):
 
     driver.get(ConfigReader.get_base_url())
