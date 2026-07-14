@@ -14,4 +14,4 @@ def test_login(driver):
     print("Page Title:", driver.title)
     print("Page Source contains Invalid?:", "Invalid" in driver.page_source)
 
-    assert "abcd" in driver.current_url.lower()
+    assert "dashboard" in driver.current_url.lower()
