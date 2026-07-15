@@ -1,10 +1,15 @@
 import pytest
 from pages.login_page import LoginPage
 from utils.config_reader import ConfigReader
-from utils.screenshot import Screenshot
-from utils.json_reader import JsonReader
+# from utils.screenshot import Screenshot
+# from utils.json_reader import JsonReader
+from utils.excel_reader import ExcelReader
 
-test_data = JsonReader.read_json("testdata/login_data.json")
+# test_data = JsonReader.read_json("testdata/login_data.json")
+test_data = ExcelReader.read_login_data(
+    "testdata/login_data.xlsx",
+    "LoginData"
+)
 
 @pytest.mark.regression
 @pytest.mark.parametrize("data", test_data)
@@ -20,9 +25,9 @@ def test_login(driver, data):
         data["password"]
     )
 
-    print("Current URL:", driver.current_url)
-    print("Page Title:", driver.title)
-    print("Page Source contains Invalid?:", "Invalid" in driver.page_source)
+    # print("Current URL:", driver.current_url)
+    # print("Page Title:", driver.title)
+    # print("Page Source contains Invalid?:", "Invalid" in driver.page_source)
 
     if data["expected"]:
         assert "dashboard" in driver.current_url.lower()
