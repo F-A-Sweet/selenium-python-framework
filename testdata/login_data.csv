@@ -1,0 +1,4 @@
+username,password,expected
+Admin,admin123,True
+Admin,wrong123,False
+WrongUser,admin123,False
