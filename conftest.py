@@ -22,12 +22,16 @@ def pytest_runtest_makereport(item, call):
         driver = item.funcargs["driver"]
         Screenshot.capture(driver, item.name)
 
-@pytest.fixture
+@pytest.fixture(scope="class")
 def driver(request):
     browser = request.config.getoption("--browser")
 
     driver = DriverFactory.get_driver(browser)
+    
+    print("Launching browser...")
 
     yield driver
+
+    print("Closing browser...")
 
     driver.quit()
