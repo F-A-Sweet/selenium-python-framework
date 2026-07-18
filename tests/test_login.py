@@ -1,6 +1,6 @@
 import pytest
-from pages.login_page import LoginPage
-from utils.config_reader import ConfigReader
+# from pages.login_page import LoginPage
+# from utils.config_reader import ConfigReader
 # from utils.screenshot import Screenshot
 # from utils.json_reader import JsonReader
 # from utils.excel_reader import ExcelReader
@@ -19,14 +19,9 @@ test_data = CSVReader.read_csv(
 
 @pytest.mark.regression
 @pytest.mark.parametrize("data", test_data)
+def test_login(login_page, data):
 
-def test_login(driver, data):
-
-    driver.get(ConfigReader.get_base_url())
-
-    login = LoginPage(driver)
-
-    login.login(
+    login_page.login(
         data["username"],
         data["password"]
     )
@@ -36,6 +31,6 @@ def test_login(driver, data):
     # print("Page Source contains Invalid?:", "Invalid" in driver.page_source)
 
     if data["expected"]:
-        assert "dashboard" in driver.current_url.lower()
+        assert "dashboard" in login_page.driver.current_url.lower()
     else:
-        assert "dashboard" not in driver.current_url.lower()
+        assert "dashboard" not in login_page.driver.current_url.lower()

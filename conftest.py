@@ -1,6 +1,8 @@
 import pytest
+from pages.login_page import LoginPage
 from utils.driver_factory import DriverFactory
 from utils.screenshot import Screenshot
+from utils.config_reader import ConfigReader
 
 
 def pytest_addoption(parser):
@@ -22,16 +24,22 @@ def pytest_runtest_makereport(item, call):
         driver = item.funcargs["driver"]
         Screenshot.capture(driver, item.name)
 
-@pytest.fixture(scope="class")
+
+@pytest.fixture(scope="function")
 def driver(request):
     browser = request.config.getoption("--browser")
-
     driver = DriverFactory.get_driver(browser)
-    
-    print("Launching browser...")
+
+    # print("Launching browser...")
 
     yield driver
 
-    print("Closing browser...")
+    # print("Closing browser...")
 
     driver.quit()
+
+
+@pytest.fixture
+def login_page(driver):
+    driver.get(ConfigReader.get_base_url())
+    return LoginPage(driver)
