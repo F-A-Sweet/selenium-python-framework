@@ -17,6 +17,7 @@ This project demonstrates industry-standard automation testing practices, includ
 - Cross Browser Testing
   - Chrome
   - Edge
+  - Firefox
 - Configuration Management (JSON)
 - Screenshot Capture on Test Failure
 - Logging
@@ -49,7 +50,7 @@ selenium-python-framework/
 │   └── login_data.csv
 │
 ├── tests/
-│   ├── test_google.py
+│   ├── test_homepage.py
 │   ├── test_login.py
 │   ├── test_markers.py
 │   ├── test_parametrize.py
