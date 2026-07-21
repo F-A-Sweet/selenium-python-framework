@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
+from pages.dashboard_page import DashboardPage
 from utils.logger import LogGen
 
 class LoginPage(BasePage):
@@ -7,6 +8,7 @@ class LoginPage(BasePage):
     USERNAME = (By.NAME, "username")
     PASSWORD = (By.NAME, "password")
     LOGIN_BUTTON = (By.CSS_SELECTOR, "button")
+    ERROR_MESSAGE = (By.CSS_SELECTOR,".oxd-alert-content-text")
 
     def __init__(self,driver):
         super().__init__(driver)
@@ -30,3 +32,10 @@ class LoginPage(BasePage):
 
         self.logger.info("Clicking login")
         self.click_login()
+
+        return DashboardPage(self.driver)
+
+    def is_login_failed(self):
+        return self.wait_for_element(
+            self.ERROR_MESSAGE
+        ).is_displayed()
