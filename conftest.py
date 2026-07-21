@@ -1,5 +1,6 @@
 import pytest
 from pages.login_page import LoginPage
+from pages.dashboard_page import DashboardPage
 from utils.driver_factory import DriverFactory
 from utils.screenshot import Screenshot
 from utils.config_reader import ConfigReader
@@ -40,6 +41,22 @@ def driver(request):
 
 
 @pytest.fixture
-def login_page(driver):
+def login_page(homepage):
+    return LoginPage(homepage)
+
+
+@pytest.fixture
+def homepage(driver):
     driver.get(ConfigReader.get_base_url())
-    return LoginPage(driver)
+    return driver
+
+
+@pytest.fixture
+def dashboard_page(login_page):
+
+    login_page.login(
+        "Admin",
+        "admin123"
+    )
+
+    return DashboardPage(login_page.driver)
