@@ -1,71 +1,70 @@
 # Selenium Python Automation Framework
 
-A scalable and maintainable Selenium Automation Framework built with **Python**, **Pytest**, and the **Page Object Model (POM)** design pattern.
-
-This project demonstrates industry-standard automation testing practices, including data-driven testing, logging, reporting, screenshots, and cross-browser execution.
+A professional Selenium Automation Framework built with **Python**, **Pytest**, and **Page Object Model (POM)**. The framework follows industry best practices such as Driver Factory, Base Page, Fixture Chaining, Page Transition Pattern, Data-Driven Testing, Logging, HTML Reporting, and Screenshot Capture.
 
 ---
 
-# Features
+## Features
 
 - Selenium WebDriver
-- Python + Pytest
+- Python 3
+- Pytest
 - Page Object Model (POM)
-- Base Page Architecture
+- Base Page Pattern
 - Driver Factory Pattern
-- Explicit Waits
-- Cross Browser Testing
-  - Chrome
-  - Edge
-  - Firefox
-- Configuration Management (JSON)
-- Screenshot Capture on Test Failure
-- Logging
-- HTML Test Reports
-- Pytest Markers
-- Parametrized Tests
+- Fixture Chaining
+- Page Transition Pattern
 - Data-Driven Testing
-  - JSON
-  - Excel (.xlsx)
-  - CSV
+- CSV Test Data
+- Excel Test Data
+- JSON Test Data
+- Config Reader
+- Explicit Waits
+- Logging
+- Screenshot on Failure
+- HTML Test Reports
+- Cross Browser Testing (Chrome, Edge, Firefox)
+- Smoke & Regression Test Execution
 
 ---
 
-# Project Structure
+## Project Structure
 
-```
+```text
 selenium-python-framework/
 │
-├── logs/
 ├── pages/
 │   ├── base_page.py
-│   └── login_page.py
-│
-├── reports/
-├── screenshots/
-│
-├── testdata/
-│   ├── login_data.json
-│   ├── login_data.xlsx
-│   └── login_data.csv
+│   ├── login_page.py
+│   └── dashboard_page.py
 │
 ├── tests/
 │   ├── test_homepage.py
 │   ├── test_login.py
-│   ├── test_markers.py
-│   ├── test_parametrize.py
+│   ├── test_dashboard.py
+│   ├── test_logout.py
+│   ├── test_csv_reader.py
 │   ├── test_excel_reader.py
-│   └── test_csv_reader.py
+│   ├── test_markers.py
+│   └── test_parametrize.py
 │
 ├── utils/
 │   ├── config_reader.py
 │   ├── csv_reader.py
-│   ├── driver_factory.py
 │   ├── excel_reader.py
 │   ├── json_reader.py
+│   ├── driver_factory.py
 │   ├── logger.py
 │   └── screenshot.py
 │
+├── testdata/
+│   ├── login_data.json
+│   ├── login_data.csv
+│   └── login_data.xlsx
+│
+├── reports/
+├── screenshots/
+├── logs/
 ├── conftest.py
 ├── pytest.ini
 ├── requirements.txt
@@ -74,55 +73,42 @@ selenium-python-framework/
 
 ---
 
-# Technologies Used
+## Framework Flow
 
-- Python 3.12
-- Selenium
-- Pytest
-- OpenPyXL
-- pytest-html
-- Git
-- GitHub
-
----
-
-# Installation
-
-Clone the repository
-
-```bash
-git clone https://github.com/F-A-Sweet/selenium-python-framework.git
-```
-
-Go to the project directory
-
-```bash
-cd selenium-python-framework
-```
-
-Create virtual environment
-
-```bash
-python -m venv venv
-```
-
-Activate virtual environment
-
-Windows
-
-```bash
-venv\Scripts\activate
-```
-
-Install dependencies
-
-```bash
-pip install -r requirements.txt
+```text
+Driver
+   │
+Homepage Fixture
+   │
+Login Page Fixture
+   │
+Dashboard Page Fixture
+   │
+Tests
 ```
 
 ---
 
-# Running Tests
+## Design Patterns Used
+
+- Page Object Model (POM)
+- Base Page Pattern
+- Driver Factory Pattern
+- Fixture Chaining
+- Page Transition Pattern
+- Data-Driven Testing
+
+---
+
+## Test Data Sources
+
+- JSON
+- Excel (.xlsx)
+- CSV
+
+---
+
+## Test Execution
 
 Run all tests
 
@@ -130,134 +116,96 @@ Run all tests
 pytest -v
 ```
 
-Run Chrome
-
-```bash
-pytest -v --browser chrome
-```
-
-Run Edge
-
-```bash
-pytest -v --browser edge
-```
-
-Run Smoke Tests
+Run smoke tests
 
 ```bash
 pytest -v -m smoke
 ```
 
-Run Regression Tests
+Run regression tests
 
 ```bash
 pytest -v -m regression
 ```
 
-Run HTML Report
+Run login tests
 
 ```bash
-pytest -v --html=reports/report.html --self-contained-html
+pytest -v tests/test_login.py
+```
+
+Run with Chrome
+
+```bash
+pytest --browser chrome
+```
+
+Run with Edge
+
+```bash
+pytest --browser edge
+```
+
+Run with Firefox
+
+```bash
+pytest --browser firefox
+```
+
+Generate HTML Report
+
+```bash
+pytest --html=reports/report.html --self-contained-html
 ```
 
 ---
 
-# Test Data Sources
+## Reports & Logs
 
-The framework supports multiple data sources.
-
-- JSON
-- Excel (.xlsx)
-- CSV
-
-Example login data:
-
-| Username | Password | Expected |
-|----------|----------|----------|
-| Admin | admin123 | True |
-| Admin | wrong123 | False |
-| WrongUser | admin123 | False |
-
----
-
-# Reports
-
-The framework generates:
-
-- HTML Reports
-- Screenshots on Failure
+- HTML Test Report
+- Screenshot Capture on Failure
 - Automation Logs
-
-Generated folders:
-
-```
-reports/
-screenshots/
-logs/
-```
+- Pytest Console Report
 
 ---
 
-# Framework Highlights
+## Technologies Used
 
-- Clean Page Object Model architecture
-- Reusable Base Page methods
-- Centralized Driver Factory
-- Externalized test data
-- Easy browser switching
-- Easy maintenance
-- Scalable project structure
-
----
-
-# Current Learning Progress
-
-Completed
-
-- Git & GitHub
-- Selenium WebDriver
+- Python
+- Selenium
 - Pytest
-- Page Object Model
-- Base Page
-- Driver Factory
-- Config Reader
-- JSON Reader
-- Excel Reader
-- CSV Reader
+- OpenPyXL
+- CSV
+- JSON
 - Logging
-- Screenshot Utility
-- HTML Reports
-- Cross Browser Testing
-- Data-Driven Testing
-- Pytest Markers
-- Parametrized Tests
+- Pytest HTML
 
 ---
 
-# Planned Improvements
+## Current Framework Capabilities
 
-- API Testing
-- Database Testing
-- Parallel Execution (pytest-xdist)
-- Allure Reports
-- Jenkins CI/CD
-- GitHub Actions
-- Docker
-- Selenium Grid
+- Login Automation
+- Dashboard Validation
+- Logout Automation
+- Homepage Validation
+- CSV Data-Driven Testing
+- Excel Data-Driven Testing
+- JSON Data-Driven Testing
+- Parameterized Tests
+- Smoke Testing
+- Regression Testing
+- Cross Browser Execution
+- HTML Reporting
+- Screenshot Capture
+- Logging
+- Reusable Fixtures
+- Page Object Model
+- Page Transition Pattern
 
 ---
 
-# Author
+## Author
 
 **Ferdous Ahmmed**
 
-QA Automation Engineer
-
-GitHub:
-https://github.com/F-A-Sweet
-
----
-
-# License
-
-This project is created for learning and portfolio purposes.
+QA Automation Engineer | Python | Selenium | Pytest
