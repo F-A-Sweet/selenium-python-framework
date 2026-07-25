@@ -1,0 +1,167 @@
+[33mcommit 06d8e4b2490524c73f31edc5abfd6974d3d048e2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Update README with framework architecture and features
+
+[33mcommit 979aa778d7d714cab073aae3cd3df7fcd69e3a8d[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Implement page transition pattern for login workflow
+
+[33mcommit ee7a5ab4bcee021b5a3564f61ff3da2a7d180726[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Refactor fixtures using fixture chaining for dashboard tests
+
+[33mcommit 06c7e18d2b6d5a69468977e7bf21e49ac2c76364[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Implement logout automation using Dashboard Page
+
+[33mcommit 221b63722739e371aaf526ea46bf1cd215530f15[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Add Dashboard Page Object and dashboard verification test
+
+[33mcommit 753d0ecd91d08101d95ed0e2e55c0f0136f5e27f[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Refactor login fixture and replace Google test with homepage test
+
+[33mcommit de88b984947766a5db39d6acf86fc65e9344fde3[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Started using SCOPE
+
+[33mcommit 9e291c9021545e5b526c799a207f986f3e81edd3[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Updated ReadMe
+
+[33mcommit fd59124df5abfd1c963411e176d4cdf7d8b1b5a0[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Implemented CSV
+
+[33mcommit f38cadce690958c628f810f9322b31aadb344291[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    implement excel data-driven testing
+
+[33mcommit 9285463f1e0a1f6ba1042debb01d2891b8d4c717[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    external JSON data-driven framework
+
+[33mcommit 6285c65a40ff5523b4ec8d930ac248759330c90f[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    set marker
+
+[33mcommit 8d4122aa87cbab895dba2a77f6b8d6a4b40a37f8[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    set marker
+
+[33mcommit 28840a79f588c185799ff39a026e1d1449adfafb[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Add logging, screenshots, and HTML reporting
+
+[33mcommit 0d8d35dfb5d8e5dfcc8e1a99f0170102739aee13[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Screenshot on Failure
+
+[33mcommit 4635f556f55eba32424a8c1ac3078d9238f07410[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Manual Screenshot
+
+[33mcommit 3573962e3162b64e3d6f1eb01771f96608300d59[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Enhance BasePage with explicit wait
+
+[33mcommit 570335adf5ffa815188434a5647117506751a3d6[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Improve project README
+
+[33mcommit b489286ad1d83571b2ea8c11d54dac308dcc0bd1[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Implement Base Page and refactor Login Page using inheritance
+
+[33mcommit 6a5b8e8c228cca47dc0b35238cf00be366a3a680[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Add configuration management using JSON
+
+[33mcommit db05d56c2d88d5a5472fe1a8de86e5e4a7eb2109[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Abtraction
+
+[33mcommit fb19fe7d0dd60f28a9fda394a01ad0acfcb72447[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Implement Page Object Model for login page
+
+[33mcommit 74bd9bcfb88270efbda2a8823c71254d647fe92d[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Update README with project overview
+
+[33mcommit 8371fa1227663116a14a6e334c2762ffaa046908[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Add configurable browser support
+
+[33mcommit f936aaf788bebeb14e00c230bdd8e2ef51a6a2e8[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Add configurable browser suppert
+
+[33mcommit 7d1f164d71772bb96060039d365181693b7b721b[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Add pytest fixture for Webdriver
+
+[33mcommit e1d5d49889e6c7526296ad61a81dc9c55f1ebe7a[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Add first Selenium test
+
+[33mcommit c37d1a5d52022a653413e8602f8a2d5c1c732202[m
+Author: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+Commit: F-A-Sweet <baust.ferdousahmmed@gmail.com>
+
+    Initial project setup

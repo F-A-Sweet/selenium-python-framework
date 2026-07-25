@@ -1,5 +1,4 @@
 import pytest
-from pages.dashboard_page import DashboardPage
 
 
 @pytest.mark.regression
