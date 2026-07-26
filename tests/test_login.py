@@ -1,6 +1,4 @@
 import pytest
-from pages.dashboard_page import DashboardPage
-from pages.login_page import LoginPage
 from utils.config_reader import ConfigReader
 # from utils.screenshot import Screenshot
 # from utils.json_reader import JsonReader
