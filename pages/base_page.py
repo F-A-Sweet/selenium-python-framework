@@ -18,3 +18,14 @@ class BasePage:
         return WebDriverWait(self.driver, timeout).until(
             EC.visibility_of_element_located(locator)
         )
+
+    def get_text(self, locator):
+        element = self.wait_for_element(locator)
+        return element.text
+
+    def get_current_url(self):
+        return self.driver.current_url
+
+
+    def get_title(self):
+        return self.driver.title

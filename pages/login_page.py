@@ -39,3 +39,8 @@ class LoginPage(BasePage):
         return self.wait_for_element(
             self.ERROR_MESSAGE
         ).is_displayed()
+
+    def get_login_error(self):
+        return self.get_text(
+            self.ERROR_MESSAGE
+    )

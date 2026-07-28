@@ -28,4 +28,7 @@ def test_login(login_page, data):
     if data["expected"]:
         assert dashboard.is_dashboard_displayed()
     else:
-        assert login_page.is_login_failed()
+        assert (
+            login_page.get_login_error()
+            == "Invalid credentials"
+            )

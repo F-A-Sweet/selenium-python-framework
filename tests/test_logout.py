@@ -18,4 +18,4 @@ def test_logout(dashboard_page):
     dashboard_page.logout()
 
     # Verify Login Page
-    assert "login" in dashboard_page.driver.current_url.lower()
+    assert "login" in dashboard_page.get_current_url.lower()
