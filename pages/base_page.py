@@ -23,6 +23,9 @@ class BasePage:
         element = self.wait_for_element(locator)
         return element.text
 
+    def is_displayed(self, locator):
+        return self.wait_for_element(locator).is_displayed()
+
     def get_current_url(self):
         return self.driver.current_url
 

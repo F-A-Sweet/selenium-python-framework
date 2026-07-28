@@ -36,9 +36,9 @@ class LoginPage(BasePage):
         return DashboardPage(self.driver)
 
     def is_login_failed(self):
-        return self.wait_for_element(
+        return self.is_displayed(
             self.ERROR_MESSAGE
-        ).is_displayed()
+        )
 
     def get_login_error(self):
         return self.get_text(
