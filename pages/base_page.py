@@ -57,3 +57,42 @@ class BasePage:
         return WebDriverWait(self.driver, timeout).until(
             EC.title_contains(title)
         )
+
+    def js_click(self, locator):
+        element = self.wait_for_element(locator)
+        self.driver.execute_script(
+            "arguments[0].click();",
+            element
+        )
+
+    def scroll_to_element(self, locator):
+        element = self.wait_for_element(locator)
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView();",
+            element
+        )
+
+    def scroll_to_bottom(self):
+        self.driver.execute_script(
+            "window.scrollTo(0, document.body.scrollHeight);"
+        )
+
+    def scroll_to_top(self):
+        self.driver.execute_script(
+            "window.scrollTo(0, 0);"
+        )
+
+    def js_type(self, locator, text):
+        element = self.wait_for_element(locator)
+        self.driver.execute_script(
+            "arguments[0].value = arguments[1];",
+            element,
+            text
+        )
+
+    def highlight_element(self, locator):
+        element = self.wait_for_element(locator)
+        self.driver.execute_script(
+            "arguments[0].style.border='3px solid red';",
+            element
+        )
