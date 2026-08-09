@@ -23,8 +23,13 @@ class DashboardPage(BasePage):
         super().__init__(driver)
 
     def is_dashboard_displayed(self):
-        return self.is_displayed(self.DASHBOARD_HEADER)
+        return self.wait_for_element(
+            self.DASHBOARD_HEADER
+        ).is_displayed()
     
     def logout(self):
         self.click(self.PROFILE_DROPDOWN)
         self.click(self.LOGOUT)
+
+        from pages.login_page import LoginPage
+        return LoginPage(self.driver)

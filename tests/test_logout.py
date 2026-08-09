@@ -1,7 +1,6 @@
 import pytest
 
 from pages.dashboard_page import DashboardPage
-# from pages.dashboard_page import DashboardPage
 
 
 @pytest.mark.regression
@@ -17,7 +16,7 @@ def test_logout(dashboard_page: DashboardPage):
     # assert dashboard.is_dashboard_displayed()
 
     # Logout
-    dashboard_page.logout()
+    login_page = dashboard_page.logout()
 
     # Verify Login Page
-    assert "login" in dashboard_page.get_current_url().lower()
+    assert "login" in login_page.get_current_url().lower()
