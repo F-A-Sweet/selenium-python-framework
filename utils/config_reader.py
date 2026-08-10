@@ -19,3 +19,11 @@ class ConfigReader:
     @staticmethod
     def get_implicit_wait():
         return ConfigReader.get_config()["implicit_wait"]
+
+    @staticmethod
+    def get_username():
+        return ConfigReader.get_config()["username"]
+
+    @staticmethod
+    def get_password():
+        return ConfigReader.get_config()["password"]
