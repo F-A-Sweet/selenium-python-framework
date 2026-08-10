@@ -1,5 +1,5 @@
 import json
-
+import os
 
 class ConfigReader:
 
@@ -22,8 +22,8 @@ class ConfigReader:
 
     @staticmethod
     def get_username():
-        return ConfigReader.get_config()["username"]
+        return os.getenv("TEST_USERNAME")
 
     @staticmethod
     def get_password():
-        return ConfigReader.get_config()["password"]
+        return os.getenv("TEST_PASSWORD")
