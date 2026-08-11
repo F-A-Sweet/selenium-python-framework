@@ -1,24 +1,33 @@
 from selenium import webdriver
 
+from utils.config_reader import ConfigReader
+
 
 class DriverFactory:
 
     @staticmethod
     def get_driver(browser):
-        if browser.lower() == "chrome":
+
+        browser = browser.lower()
+
+        if browser == "chrome":
             driver = webdriver.Chrome()
 
-        elif browser.lower() == "firefox":
+        elif browser == "firefox":
             driver = webdriver.Firefox()
 
-        elif browser.lower() == "edge":
+        elif browser == "edge":
             driver = webdriver.Edge()
 
         else:
-            raise Exception(f"Browser '{browser}' is not supported.")
-        
+            raise ValueError(
+                f"Browser '{browser}' is not supported."
+            )
+
         driver.maximize_window()
-        driver.implicitly_wait(5)
+        driver.implicitly_wait(
+            ConfigReader.get_implicit_wait()
+        )
 
         print(f"Launching {browser} browser...")
 

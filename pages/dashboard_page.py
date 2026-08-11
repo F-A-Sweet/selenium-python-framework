@@ -19,9 +19,6 @@ class DashboardPage(BasePage):
         "//a[text()='Logout']"
     )
 
-    def __init__(self, driver):
-        super().__init__(driver)
-
     def is_dashboard_displayed(self):
         return self.wait_for_element(
             self.DASHBOARD_HEADER
