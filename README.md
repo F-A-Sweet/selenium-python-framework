@@ -1,6 +1,8 @@
 # Selenium Python Automation Framework
 
-A professional Selenium Automation Framework built with **Python**, **Pytest**, and **Page Object Model (POM)**. The framework follows industry best practices such as Driver Factory, Base Page, Fixture Chaining, Page Transition Pattern, Data-Driven Testing, Logging, HTML Reporting, and Screenshot Capture.
+A professional Selenium WebDriver automation framework built with **Python**, **Pytest**, and the **Page Object Model (POM)**.
+
+The framework is designed with reusable page objects, centralized WebDriver management, fixture chaining, data-driven testing, configuration management, logging, failure screenshots, and cross-browser execution.
 
 ---
 
@@ -17,14 +19,16 @@ A professional Selenium Automation Framework built with **Python**, **Pytest**, 
 - Data-Driven Testing
 - CSV Test Data
 - Excel Test Data
-- JSON Test Data
-- Config Reader
+- JSON Reader Support
+- Configuration Management
+- Environment-based Test Credentials
 - Explicit Waits
 - Logging
-- Screenshot on Failure
+- Screenshot Capture on Test Failure
 - HTML Test Reports
-- Cross Browser Testing (Chrome, Edge, Firefox)
-- Smoke & Regression Test Execution
+- Cross-Browser Testing
+- Smoke Test Execution
+- Regression Test Execution
 
 ---
 
@@ -32,6 +36,9 @@ A professional Selenium Automation Framework built with **Python**, **Pytest**, 
 
 ```text
 selenium-python-framework/
+│
+├── config/
+│   └── config.json
 │
 ├── pages/
 │   ├── base_page.py
@@ -43,10 +50,14 @@ selenium-python-framework/
 │   ├── test_login.py
 │   ├── test_dashboard.py
 │   ├── test_logout.py
+│   ├── test_login_logout_flow.py
 │   ├── test_csv_reader.py
-│   ├── test_excel_reader.py
-│   ├── test_markers.py
-│   └── test_parametrize.py
+│   └── test_excel_reader.py
+│
+├── testdata/
+│   ├── login_data.json
+│   ├── login_data.csv
+│   └── login_data.xlsx
 │
 ├── utils/
 │   ├── config_reader.py
@@ -57,102 +68,261 @@ selenium-python-framework/
 │   ├── logger.py
 │   └── screenshot.py
 │
-├── testdata/
-│   ├── login_data.json
-│   ├── login_data.csv
-│   └── login_data.xlsx
-│
 ├── reports/
 ├── screenshots/
 ├── logs/
 ├── conftest.py
 ├── pytest.ini
 ├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
 ---
 
-## Framework Flow
+## Framework Architecture
 
 ```text
-Driver
-   │
-Homepage Fixture
-   │
-Login Page Fixture
-   │
-Dashboard Page Fixture
-   │
-Tests
+                    Pytest
+                       │
+                       ▼
+                  conftest.py
+                       │
+                       ▼
+                 Driver Factory
+                       │
+                       ▼
+                    WebDriver
+                       │
+                       ▼
+                Homepage Fixture
+                       │
+                       ▼
+                 LoginPage Fixture
+                       │
+                       ▼
+                DashboardPage
+                       │
+                       ▼
+                     Tests
 ```
 
 ---
 
-## Design Patterns Used
+## Page Object Model
 
-- Page Object Model (POM)
-- Base Page Pattern
-- Driver Factory Pattern
-- Fixture Chaining
-- Page Transition Pattern
-- Data-Driven Testing
+The framework separates test logic from Selenium implementation.
+
+### BasePage
+
+Provides reusable browser operations such as:
+
+- Click
+- Type
+- Wait for element
+- Wait for clickable element
+- Get text
+- Check visibility
+- URL validation
+- Title validation
+- Scrolling
+- JavaScript interactions
+
+### LoginPage
+
+Handles:
+
+- Username input
+- Password input
+- Login action
+- Login error validation
+
+### DashboardPage
+
+Handles:
+
+- Dashboard validation
+- Profile menu
+- Logout
+- Page transition back to LoginPage
 
 ---
 
-## Test Data Sources
+## Fixture Chaining
 
-- JSON
-- Excel (.xlsx)
+Pytest fixtures are chained to create the required page objects.
+
+```text
+driver
+  │
+  ▼
+homepage
+  │
+  ▼
+login_page
+  │
+  ▼
+dashboard_page
+```
+
+This keeps test cases clean and avoids repeating browser setup and login logic.
+
+---
+
+## Page Transition Pattern
+
+Page actions return the next Page Object when appropriate.
+
+Example:
+
+```python
+dashboard_page = login_page.login(
+    username,
+    password
+)
+```
+
+After logout:
+
+```python
+login_page = dashboard_page.logout()
+```
+
+This allows tests to work with page objects instead of directly managing WebDriver navigation.
+
+---
+
+## Data-Driven Testing
+
+Login testing uses Pytest parametrization with external test data.
+
+Current login test data is loaded from CSV:
+
+```text
+testdata/login_data.csv
+        │
+        ▼
+    CSVReader
+        │
+        ▼
+@pytest.mark.parametrize
+        │
+        ▼
+     test_login
+```
+
+Example:
+
+```python
+@pytest.mark.parametrize("data", test_data)
+def test_login(login_page, data):
+    ...
+```
+
+The framework also includes readers for:
+
 - CSV
+- Excel
+- JSON
+
+---
+
+## Configuration Management
+
+Framework configuration is stored in:
+
+```text
+config/config.json
+```
+
+Example configuration:
+
+```json
+{
+    "base_url": "https://opensource-demo.orangehrmlive.com/",
+    "browser": "chrome",
+    "implicit_wait": 10
+}
+```
+
+Configuration values are accessed through `ConfigReader`.
+
+---
+
+## Environment Variables
+
+Test credentials are loaded from environment variables rather than being stored directly in the test code.
+
+Example:
+
+```text
+TEST_USERNAME
+TEST_PASSWORD
+```
+
+The `.env` file is excluded from Git through `.gitignore`.
+
+This prevents sensitive test credentials from being committed to the repository.
+
+---
+
+## Cross-Browser Testing
+
+The framework supports:
+
+- Chrome
+- Firefox
+- Edge
+
+Browser selection is handled through the Pytest command-line option.
 
 ---
 
 ## Test Execution
 
-Run all tests
+### Run all tests
 
 ```bash
 pytest -v
 ```
 
-Run smoke tests
+### Run smoke tests
 
 ```bash
 pytest -v -m smoke
 ```
 
-Run regression tests
+### Run regression tests
 
 ```bash
 pytest -v -m regression
 ```
 
-Run login tests
+### Run login tests
 
 ```bash
 pytest -v tests/test_login.py
 ```
 
-Run with Chrome
+### Run with Chrome
 
 ```bash
-pytest --browser chrome
+pytest -v --browser chrome
 ```
 
-Run with Edge
+### Run with Edge
 
 ```bash
-pytest --browser edge
+pytest -v --browser edge
 ```
 
-Run with Firefox
+### Run with Firefox
 
 ```bash
-pytest --browser firefox
+pytest -v --browser firefox
 ```
 
-Generate HTML Report
+### Generate HTML Report
 
 ```bash
 pytest --html=reports/report.html --self-contained-html
@@ -160,47 +330,88 @@ pytest --html=reports/report.html --self-contained-html
 
 ---
 
-## Reports & Logs
+## Logging
 
-- HTML Test Report
-- Screenshot Capture on Failure
-- Automation Logs
-- Pytest Console Report
+The framework uses Python's built-in `logging` module.
+
+Logs are stored in:
+
+```text
+logs/Automation.log
+```
+
+Example log format:
+
+```text
+2026-01-01 12:00:00 | INFO | Entering username
+2026-01-01 12:00:01 | INFO | Entering password
+2026-01-01 12:00:02 | INFO | Clicking login
+```
+
+---
+
+## Screenshot on Failure
+
+When a test fails, the Pytest reporting hook captures a screenshot automatically.
+
+Screenshots are stored in:
+
+```text
+screenshots/
+```
+
+The filename contains the test name and timestamp.
+
+---
+
+## Current Test Coverage
+
+The current suite covers:
+
+- Homepage validation
+- Successful login
+- Invalid login credentials
+- Dashboard validation
+- Logout
+- Login → Dashboard → Logout flow
+- CSV reader validation
+- Excel reader validation
+
+Latest full-suite verification:
+
+```text
+9 passed
+```
 
 ---
 
 ## Technologies Used
 
 - Python
-- Selenium
+- Selenium WebDriver
 - Pytest
 - OpenPyXL
+- python-dotenv
 - CSV
 - JSON
-- Logging
-- Pytest HTML
+- Python Logging
+- pytest-html
 
 ---
 
-## Current Framework Capabilities
+## Design Patterns and Practices
 
-- Login Automation
-- Dashboard Validation
-- Logout Automation
-- Homepage Validation
-- CSV Data-Driven Testing
-- Excel Data-Driven Testing
-- JSON Data-Driven Testing
-- Parameterized Tests
-- Smoke Testing
-- Regression Testing
-- Cross Browser Execution
-- HTML Reporting
-- Screenshot Capture
-- Logging
-- Reusable Fixtures
 - Page Object Model
+- Base Page Pattern
+- Driver Factory Pattern
+- Fixture Chaining
 - Page Transition Pattern
+- Data-Driven Testing
+- Explicit Waits
+- Configuration Management
+- Environment Variables
+- Failure Screenshot Capture
+- Centralized Logging
 
 ---
 
@@ -208,4 +419,6 @@ pytest --html=reports/report.html --self-contained-html
 
 **Ferdous Ahmmed**
 
-QA Automation Engineer | Python | Selenium | Pytest
+QA Automation Engineer
+
+**Skills:** Python | Selenium | Pytest | Test Automation
