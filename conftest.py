@@ -26,7 +26,10 @@ def pytest_runtest_makereport(item, call):
         driver = item.funcargs.get("driver")
 
         if driver:
-            Screenshot.capture(driver, item.name)
+            try:
+                Screenshot.capture(driver, item.name)
+            except Exception:
+                pass
 
 
 @pytest.fixture(scope="function")
