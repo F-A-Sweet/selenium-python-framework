@@ -1,6 +1,5 @@
+import os
 from selenium import webdriver
-
-from utils.config_reader import ConfigReader
 
 
 class DriverFactory:
@@ -8,26 +7,48 @@ class DriverFactory:
     @staticmethod
     def get_driver(browser):
 
-        browser = browser.lower()
+        is_ci = os.getenv("CI") == "true"
 
-        if browser == "chrome":
-            driver = webdriver.Chrome()
+        if browser.lower() == "chrome":
 
-        elif browser == "firefox":
-            driver = webdriver.Firefox()
+            options = webdriver.ChromeOptions()
 
-        elif browser == "edge":
-            driver = webdriver.Edge()
+            if is_ci:
+                options.add_argument("--headless")
+                options.add_argument("--no-sandbox")
+                options.add_argument("--disable-dev-shm-usage")
+                options.add_argument("--window-size=1920,1080")
+
+            driver = webdriver.Chrome(options=options)
+
+        elif browser.lower() == "firefox":
+
+            options = webdriver.FirefoxOptions()
+
+            if is_ci:
+                options.add_argument("--headless")
+
+            driver = webdriver.Firefox(options=options)
+
+        elif browser.lower() == "edge":
+
+            options = webdriver.EdgeOptions()
+
+            if is_ci:
+                options.add_argument("--headless")
+                options.add_argument("--no-sandbox")
+                options.add_argument("--disable-dev-shm-usage")
+                options.add_argument("--window-size=1920,1080")
+
+            driver = webdriver.Edge(options=options)
 
         else:
-            raise ValueError(
+            raise Exception(
                 f"Browser '{browser}' is not supported."
             )
 
         driver.maximize_window()
-        driver.implicitly_wait(
-            ConfigReader.get_implicit_wait()
-        )
+        driver.implicitly_wait(5)
 
         print(f"Launching {browser} browser...")
 
