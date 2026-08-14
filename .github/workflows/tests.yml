@@ -43,5 +43,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pytest-artifacts
-          path: reports/report.html
+          path: |
+            reports/
+            screenshots/
+            logs/
           retention-days: 7
