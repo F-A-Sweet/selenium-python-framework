@@ -280,6 +280,10 @@ Browser selection is handled through the Pytest command-line option.
 
 ## Test Execution
 
+## CI Status
+
+GitHub Actions runs the Selenium test suite automatically on every push to main.
+
 ### Run all tests
 
 ```bash
