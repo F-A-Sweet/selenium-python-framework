@@ -284,6 +284,18 @@ Browser selection is handled through the Pytest command-line option.
 
 GitHub Actions CI pipeline runs the Pytest suite and uploads HTML reports, screenshots, and logs as artifacts.
 
+## Continuous Integration
+
+This framework uses GitHub Actions to automatically execute the Pytest test suite on every push and pull request to the `main` branch.
+
+The CI pipeline:
+
+- Installs Python dependencies
+- Runs Pytest tests
+- Generates a self-contained HTML test report
+- Captures screenshots for failed tests
+- Stores test reports, screenshots, and logs as GitHub Actions artifacts
+
 ### Run all tests
 
 ```bash
