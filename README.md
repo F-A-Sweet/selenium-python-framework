@@ -280,9 +280,9 @@ Browser selection is handled through the Pytest command-line option.
 
 ## Test Execution
 
-## CI Status
+## CI Verification
 
-GitHub Actions runs the Selenium test suite automatically on every push to main.
+GitHub Actions CI pipeline runs the Pytest suite and uploads HTML reports, screenshots, and logs as artifacts.
 
 ### Run all tests
 
